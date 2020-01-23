@@ -6,16 +6,15 @@ echo middleware that print log for a api's request / response
 #### Output
 
 ```go
-2020-01-21T23:48:53.6996825+09:00 [TRACE] [null] {
- "RequestId": "", // todo
+2020-01-23T13:33:42.84136+09:00 [TRACE] [null] {
  "request": {
   "body": {
    "name": "nolleh",
-   "say": "hello, Happy new year!"
+   "say": "hello happy new year!"
   },
   "header": {
    "Content-Length": [
-    "41"
+    "60"
    ],
    "Content-Type": [
     "application/json"
@@ -24,9 +23,12 @@ echo middleware that print log for a api's request / response
   "method": "POST",
   "uri": "/"
  },
+ "requestId": "",
  "response": {
-  "body": null, // todo
-  "status": 0
+  "body": {
+   "message": "Hello, World!"
+  },
+  "status": 200
  }
 }
 ```
@@ -34,14 +36,14 @@ echo middleware that print log for a api's request / response
 #### Source
 
 ```go
-	// Echo instance
+    // Echo instance
     // e := echo.New()
     
     /// this one line!
-	e.Use(middleware.CtxLogger())
+    e.Use(middleware.CtxLogger())
 
-	// e.POST("/", hello)
-	// e.Logger.Fatal(e.Start(":1323"))
+    // e.POST("/", hello)
+    // e.Logger.Fatal(e.Start(":1323"))
 ```
 
 
