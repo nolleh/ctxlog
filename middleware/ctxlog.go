@@ -3,7 +3,10 @@ package middleware
 import (
 	"ctxlog"
 	"net/http"
-
+	"encoding/json"
+	"strings"
+	"io/ioutil"
+	"bytes"
 	"github.com/labstack/echo"
 )
 
@@ -18,8 +21,23 @@ func CtxLogger() echo.MiddlewareFunc {
 				requestId = res.Header().Get(echo.HeaderXRequestID)
 			}
 
+			buf, _ := ioutil.ReadAll(req.Body)
+			rdr1 := ioutil.NopCloser(bytes.NewBuffer(buf))
+			rdr2 := ioutil.NopCloser(bytes.NewBuffer(buf))
+			
 			var body echo.Map
-			c.Bind(&body)
+			ctype := req.Header.Get(echo.HeaderContentType)
+			switch {
+			case strings.HasPrefix(ctype, echo.MIMEApplicationJSON):
+				if err := json.NewDecoder(rdr1).Decode(&body); err != nil {
+					// it can be body is null. 
+					// TODO: clarify error type
+				}
+			// TODO: only implemented for json, now. 
+			// Change
+			}
+			
+			req.Body = rdr2
 			request := Request{req.Header, req.RequestURI, req.Method, &body}
 
 			if err := next(c); err != nil {
@@ -32,8 +50,9 @@ func CtxLogger() echo.MiddlewareFunc {
 			return nil
 		}
 	}
-
 }
+
+
 
 type Request struct {
 	Header http.Header `json:"header"`
