@@ -9,10 +9,10 @@ import (
 )
 
 var (
-	Logger = NewLogger()
+	logger = newLogger()
 )
 
-func NewLogger() *logrus.Logger {
+func newLogger() *logrus.Logger {
 	log.SetFlags(log.LstdFlags | log.Lshortfile)
 	log.SetOutput(os.Stdout)
 
@@ -22,6 +22,10 @@ func NewLogger() *logrus.Logger {
 	return logger
 }
 
+/*
+Log makes extended logrus entry.
+@example ctxlog.Log().Debug(Message) where Message is struct or string, whatever
+*/
 func Log() *formatter.Entry {
-	return &formatter.Entry{Entry: logrus.NewEntry(Logger)}
+	return &formatter.Entry{Entry: logrus.NewEntry(logger)}
 }
