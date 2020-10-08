@@ -2,7 +2,7 @@ package middleware
 
 import (
 	"bytes"
-	"ctxlog"
+	"github.com/nolleh/ctxlog"
 	"encoding/json"
 	"io"
 	"io/ioutil"

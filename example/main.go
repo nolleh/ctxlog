@@ -1,8 +1,8 @@
 package main
 
 import (
-	"ctxlog"
-	"ctxlog/middleware"
+	"github.com/nolleh/ctxlog"
+	"github.com/nolleh/ctxlog/middleware"
 	"encoding/json"
 	"net/http"
 
