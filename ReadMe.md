@@ -40,12 +40,14 @@ then get ..
 ```go
 func main() {
 
-	// Echo instance
-	e := echo.New()
-	e.Use(middleware.CtxLogger())
+    // Echo instance
+    e := echo.New()
+    
+    /// this one line! (other codes are for start echo frameworks / http handler)
+    e.Use(middleware.CtxLogger())
 
-	e.POST("/", hello)
-	e.Logger.Fatal(e.Start(":1323"))
+    e.POST("/", hello)
+    e.Logger.Fatal(e.Start(":1323"))
 }
 
 // http Handler
@@ -129,20 +131,6 @@ colored by log level
 }
 
 ```
-
-#### Source
-
-```go
-    // Echo instance
-    // e := echo.New()
-    
-    /// this one line!
-    e.Use(middleware.CtxLogger())
-
-    // e.POST("/", hello)
-    // e.Logger.Fatal(e.Start(":1323"))
-```
-
 
 ### Dependency 
 * echo framework (for middlware implementation) [](http://github.com/labstack/echo)
