@@ -1,3 +1,6 @@
+[![Go Reference](https://pkg.go.dev/badge/github.com/nolleh/ctxlog.svg)](https://pkg.go.dev/github.com/nolleh/ctxlog)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 ## ctxlog
 ---
 echo middleware that print log for a api's request / response
