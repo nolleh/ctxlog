@@ -2,7 +2,9 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## ctxlog
+
 ---
+
 echo middleware that print log for a api's request / response
 
 if you write request / response like this,
@@ -13,19 +15,20 @@ then get ..
 
 <img src="docs/images/output.png" alt="example" width="600" height="800"/>
 
-
 > you need only one line to show this request/response log !
 
-``e.Use(middleware.CtxLogger())``
+`e.Use(middleware.CtxLogger())`
 
 ### Example Details
 
 ---
+
 #### request
+
 ```json
 {
-	"name": "nolleh",
-	"say": "hello happy new year!"
+  "name": "nolleh",
+  "say": "hello happy new year!"
 }
 ```
 
@@ -33,11 +36,12 @@ then get ..
 
 ```json
 {
-    "message":"Hello, World!"
+  "message": "Hello, World!"
 }
 ```
 
 #### go
+
 [example/main.go](https://github.com/nolleh/ctxlog/blob/master/example/main.go)
 
 ```go
@@ -45,7 +49,7 @@ func main() {
 
     // Echo instance
     e := echo.New()
-    
+
     /// this one line! (other codes are for start echo frameworks / http handler)
     e.Use(middleware.CtxLogger())
 
@@ -88,7 +92,7 @@ colored by log level
  "say": "hello happy new year!"
 }
 
-// 
+//
 2020-10-08T16:40:46.5171606+09:00 [TRACE] {
  "request": {
   "body": {
@@ -135,6 +139,7 @@ colored by log level
 
 ```
 
-### Dependency 
-* echo framework (for middlware implementation) [](http://github.com/labstack/echo)
-* caption_json_formatter [](http://github.com/nolleh/caption_json_formatter)
+### Dependency
+
+- echo framework (for middlware implementation) [](http://github.com/labstack/echo)
+- caption_json_formatter [](http://github.com/nolleh/caption_json_formatter)

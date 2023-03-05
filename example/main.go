@@ -2,8 +2,8 @@ package main
 
 import (
 	// "github.com/nolleh/ctxlog"
-	"github.com/nolleh/ctxlog/middleware"
 	"encoding/json"
+	"github.com/nolleh/ctxlog/middleware"
 	"net/http"
 
 	"github.com/labstack/echo"
@@ -15,7 +15,7 @@ func main() {
 	e := echo.New()
 	e.Use(middleware.CtxLogger())
 
-	e.POST("/", hello)
+	e.GET("/", hello)
 	e.Logger.Fatal(e.Start(":1323"))
 }
 

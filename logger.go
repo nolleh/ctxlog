@@ -18,7 +18,7 @@ func newLogger() *logrus.Logger {
 
 	logger := logrus.New()
 	logger.Level = logrus.TraceLevel
-	logger.SetFormatter(&formatter.Formatter{PrettyPrint: true})
+	logger.SetFormatter(&formatter.Formatter{PrettyPrint: false})
 	return logger
 }
 

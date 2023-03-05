@@ -2,8 +2,8 @@ package middleware
 
 import (
 	"bytes"
-	"github.com/nolleh/ctxlog"
 	"encoding/json"
+	"github.com/nolleh/ctxlog"
 	"io"
 	"io/ioutil"
 	"net/http"
