@@ -9,17 +9,27 @@ import (
 )
 
 var (
-	logger = newLogger()
+	logger, console = newLogger()
 )
 
-func newLogger() *logrus.Logger {
+func newLogger() (*logrus.Logger, *formatter.Formatter) {
 	log.SetFlags(log.LstdFlags | log.Lshortfile)
 	log.SetOutput(os.Stdout)
 
 	logger := logrus.New()
 	logger.Level = logrus.TraceLevel
-	logger.SetFormatter(&formatter.Formatter{PrettyPrint: false})
+
+	consoleFormat := formatter.Console()
+	logger.SetFormatter(consoleFormat)
+	return logger, consoleFormat
+}
+
+func Logger() *logrus.Logger {
 	return logger
+}
+
+func CaptionJsonFormatter() *formatter.Formatter {
+	return console
 }
 
 /*

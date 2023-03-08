@@ -3,16 +3,22 @@ package middleware
 import (
 	"bytes"
 	"encoding/json"
-	"github.com/nolleh/ctxlog"
 	"io"
 	"io/ioutil"
 	"net/http"
 	"strings"
 
+	"github.com/nolleh/ctxlog"
+	"github.com/sirupsen/logrus"
+
 	"github.com/labstack/echo"
 )
 
 func CtxLogger() echo.MiddlewareFunc {
+	return CtxLoggerWithLevel(logrus.TraceLevel)
+}
+
+func CtxLoggerWithLevel(l logrus.Level) echo.MiddlewareFunc {
 	return func(next echo.HandlerFunc) echo.HandlerFunc {
 		return func(c echo.Context) error {
 			req := c.Request()
@@ -42,9 +48,29 @@ func CtxLogger() echo.MiddlewareFunc {
 
 			response := Response{&respBody, res.Status}
 			data := CtxLogData{request, response, requestId}
-			ctxlog.Log().Trace(data)
+			printLogByLevel(l, data)
 			return nil
 		}
+	}
+}
+
+func printLogByLevel(l logrus.Level, data CtxLogData) {
+	switch l {
+	case logrus.TraceLevel:
+		ctxlog.Log().Trace(data)
+		break
+	case logrus.DebugLevel:
+		ctxlog.Log().Debug(data)
+	case logrus.InfoLevel:
+		ctxlog.Log().Info(data)
+		break
+	case logrus.WarnLevel:
+		ctxlog.Log().Warn(data)
+		break
+	case logrus.ErrorLevel:
+		ctxlog.Log().Error(data)
+	default:
+		ctxlog.Log().Trace(data)
 	}
 }
 

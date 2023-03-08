@@ -1,19 +1,31 @@
 package main
 
 import (
-	// "github.com/nolleh/ctxlog"
 	"encoding/json"
-	"github.com/nolleh/ctxlog/middleware"
+	"github.com/labstack/echo"
+	"github.com/sirupsen/logrus"
 	"net/http"
 
-	"github.com/labstack/echo"
+	cjf "github.com/nolleh/caption_json_formatter"
+	"github.com/nolleh/ctxlog"
+	"github.com/nolleh/ctxlog/middleware"
 )
 
 func main() {
+	// [optional] retreive ctxlogs formatter (CaptionJsonFormatter)
+	formatter := ctxlog.CaptionJsonFormatter()
+	// [optional] you can modify format configruation from default.
+	formatter.PrettyPrint = true
+	// [optional] or, you reset your own formatter
+	formatter = cjf.Json()
+	// [optional] and set any formatter compatiable with logrus.formatter
+	ctxlog.Logger().SetFormatter(formatter)
 
 	// Echo instance
 	e := echo.New()
+	// [required] use ctxlog
 	e.Use(middleware.CtxLogger())
+	e.Use(middleware.CtxLoggerWithLevel(logrus.WarnLevel))
 
 	e.GET("/", hello)
 	e.Logger.Fatal(e.Start(":1323"))

@@ -19,6 +19,53 @@ then get ..
 
 `e.Use(middleware.CtxLogger())`
 
+#### more example...
+
+set formatter as warning level ctxlog
+
+<img src="docs/images/level_warn.png" alt="warning_level_ctx_log"/>
+
+set formatter as [CaptionJsonFormatter.Json()](https://github.com/nolleh/caption_json_formatter)
+
+<img src="docs/images/json.png" alt="json_log"/>
+
+---
+
+### configuration
+
+you can also configuration your ctxlog.
+colorize, json format..
+default ctxlog will be formatted as caption_json_formatter.Console(). see more [here](https://github.com/nolleh/caption_json_formatter)
+
+you can change the default option, formatter, as you wish.
+
+```go
+import (
+  cjf "github.com/nolleh/caption_json_formatter"
+  "github.com/nolleh/ctxlog"
+  "github.com/nolleh/ctxlog/middleware"
+)
+
+func main() {
+  // [optional] retreive ctxlogs formatter (CaptionJsonFormatter)
+  formatter := ctxlog.CaptionJsonFormatter()
+  // [optional] you can modify format configruation from default.
+  formatter.PrettyPrint = true
+  // [optional] or, you reset your own formatter
+  formatter = cjf.Json()
+  // [optional] and set 'ANY FORMATTER' compatiable with logrus.formatter
+  ctxlog.Logger().SetFormatter(formatter)
+
+  // Echo instance
+  e := echo.New()
+  // [required] use ctxlog middleware (if you want use middleware. or,
+  // just use ctxlog and declare your own, as you wish)
+  e.Use(middleware.CtxLogger())
+  // print level can be modified.
+  // e.Use(middleware.CtxLoggerWithLevel(logrus.WarnLevel))
+}
+```
+
 ### Example Details
 
 ---

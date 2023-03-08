@@ -11,8 +11,8 @@ github.com/mattn/go-colorable v0.1.2/go.mod h1:U0ppj6V5qS13XJ6of8GYAs25YV2eR4EVc
 github.com/mattn/go-isatty v0.0.8/go.mod h1:Iq45c/XA43vh69/j3iqttzPXn0bhXyGjM0Hdxcsrc5s=
 github.com/mattn/go-isatty v0.0.9 h1:d5US/mDsogSGW37IV293h//ZFaeajb69h+EHFsv2xGg=
 github.com/mattn/go-isatty v0.0.9/go.mod h1:YNRxwqDuOph6SZLI9vUUz6OYw3QyUt7WiY2yME+cCiQ=
-github.com/nolleh/caption_json_formatter v0.1.0 h1:ElPMUpJCGst4bUPxI2L45+/IDO71DwZcJEo+xFBD9cc=
-github.com/nolleh/caption_json_formatter v0.1.0/go.mod h1:5FYofZA8NAej/eFxa12FvyQKosU1LfyKizZPlY0JojU=
+github.com/nolleh/caption_json_formatter v0.2.1 h1:cEkUNQuOvaHFP150KUrsC5F61J7+lngpQWwYkxVdV8k=
+github.com/nolleh/caption_json_formatter v0.2.1/go.mod h1:5FYofZA8NAej/eFxa12FvyQKosU1LfyKizZPlY0JojU=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/sirupsen/logrus v1.4.2/go.mod h1:tLMulIdttU9McNUspp0xgXVQah82FyeX6MwdIuYE2rE=
