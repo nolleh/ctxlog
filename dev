@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
 go mod edit -replace github.com/nolleh/ctxlog=../ctxlog
+go mod edit -replace github.com/nolleh/caption_json_formatter=../caption_json_formatter/

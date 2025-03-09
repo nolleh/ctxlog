@@ -4,14 +4,12 @@ import (
 	"bytes"
 	"encoding/json"
 	"io"
-	"io/ioutil"
 	"net/http"
 	"strings"
 
+	"github.com/labstack/echo"
 	"github.com/nolleh/ctxlog"
 	"github.com/sirupsen/logrus"
-
-	"github.com/labstack/echo"
 )
 
 func CtxLogger() echo.MiddlewareFunc {
@@ -43,7 +41,7 @@ func CtxLoggerWithLevel(l logrus.Level) echo.MiddlewareFunc {
 			}
 
 			var respBody echo.Map
-			rdr3 := ioutil.NopCloser(bytes.NewReader(myWriter.Bytes))
+			rdr3 := io.NopCloser(bytes.NewReader(myWriter.Bytes))
 			bind(req, rdr3, &respBody)
 
 			response := Response{&respBody, res.Status}
@@ -75,13 +73,13 @@ func printLogByLevel(l logrus.Level, data CtxLogData) {
 }
 
 func copyBody(req *http.Request) (io.ReadCloser, io.ReadCloser) {
-	buf, _ := ioutil.ReadAll(req.Body)
-	rdr1 := ioutil.NopCloser(bytes.NewBuffer(buf))
-	rdr2 := ioutil.NopCloser(bytes.NewBuffer(buf))
+	buf, _ := io.ReadAll(req.Body)
+	rdr1 := io.NopCloser(bytes.NewBuffer(buf))
+	rdr2 := io.NopCloser(bytes.NewBuffer(buf))
 	return rdr1, rdr2
 }
 
-func bind(req *http.Request, rdr io.ReadCloser, i interface{}) {
+func bind(req *http.Request, rdr io.ReadCloser, i any) {
 	ctype := req.Header.Get(echo.HeaderContentType)
 	switch {
 	case strings.HasPrefix(ctype, echo.MIMEApplicationJSON):

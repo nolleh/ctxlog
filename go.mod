@@ -1,14 +1,23 @@
 module github.com/nolleh/ctxlog
 
-go 1.12
+go 1.23.0
+
+toolchain go1.24.1
 
 require (
 	github.com/labstack/echo v3.3.10+incompatible
-	github.com/labstack/gommon v0.3.0 // indirect
-	github.com/nolleh/caption_json_formatter v0.2.1
-	github.com/sirupsen/logrus v1.9.0
-	golang.org/x/crypto v0.0.0-20220314234659-1baeb1ce4c0b // indirect
-	golang.org/x/sys v0.6.0 // indirect
+	github.com/nolleh/caption_json_formatter v0.2.2
+	github.com/sirupsen/logrus v1.9.3
 )
 
-replace github.com/nolleh/ctxlog => ../ctxlog
+require (
+	github.com/labstack/gommon v0.4.2 // indirect
+	github.com/mattn/go-colorable v0.1.13 // indirect
+	github.com/mattn/go-isatty v0.0.20 // indirect
+	github.com/valyala/bytebufferpool v1.0.0 // indirect
+	github.com/valyala/fasttemplate v1.2.2 // indirect
+	golang.org/x/crypto v0.36.0 // indirect
+	golang.org/x/net v0.21.0 // indirect
+	golang.org/x/sys v0.31.0 // indirect
+	golang.org/x/text v0.23.0 // indirect
+)
